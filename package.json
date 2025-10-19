@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/vika-mako/ai_cards/issues"
   },
-  "homepage": "https://github.com/vika-mako/ai_cards#readme"
+  "homepage": "https://github.com/vika-mako/ai_cards#readme",
+  "devDependencies": {
+    "tsx": "^4.20.6"
+  }
 }
