@@ -1,0 +1,19 @@
+{
+  "name": "ai_cards",
+  "version": "0.0.0",
+  "description": "my cards ai project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vika-mako/ai_cards.git"
+  },
+  "author": "Vika Makovetskaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vika-mako/ai_cards/issues"
+  },
+  "homepage": "https://github.com/vika-mako/ai_cards#readme"
+}
