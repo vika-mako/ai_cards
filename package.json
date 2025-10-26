@@ -18,5 +18,8 @@
   "homepage": "https://github.com/vika-mako/ai_cards#readme",
   "devDependencies": {
     "tsx": "^4.20.6"
+  },
+  "dependencies": {
+    "fastify": "^5.6.1"
   }
 }
