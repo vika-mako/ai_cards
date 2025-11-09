@@ -1,15 +1,17 @@
-// Import the framework and instantiate it
+import { getStatusUseCase } from './domain/usecases/getStatusUseCase.ts'
+
+
 import Fastify from 'fastify'
 const fastify = Fastify({
   logger: true
 })
 
-// Declare a route
-fastify.get('/', async function handler (request, reply) {
-  return { hello: 'world' }
+
+fastify.get('/status', async function handler (request, reply) {
+  return await getStatusUseCase() 
 })
 
-// Run the server!
+
 try {
   await fastify.listen({ port: 3000 })
 } catch (err) {
