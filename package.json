@@ -2,7 +2,8 @@
   "name": "ai_cards",
   "version": "0.0.0",
   "description": "my cards ai project",
-  "main": "index.js",
+  "main": "server.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
     "tsx": "^4.20.6"
   },
   "dependencies": {
-    "fastify": "^5.6.1"
+    "fastify": "^5.6.1",
+    "openai": "^6.10.0"
   }
 }
