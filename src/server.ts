@@ -1,12 +1,15 @@
 import Fastify from 'fastify'
 
 import { apiV1Routes } from './routes.js';
+import { registerSwagger } from './plugins/swagger.js';
 
 const PORT = Number(process.env.PORT);
 const HOST = process.env.HOST;
 
 
 const fastify = Fastify({ logger: true });
+
+await registerSwagger(fastify);
 
 fastify.register(apiV1Routes, { prefix: '/api/v1' });
 
