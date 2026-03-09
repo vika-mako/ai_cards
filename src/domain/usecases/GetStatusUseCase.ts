@@ -1,4 +1,4 @@
-import { AppStatus } from "../model/AppStatus.ts";
+import { AppStatus } from "../model/AppStatus.js";
 
 
 export async function getStatusUseCase(): Promise<AppStatus> {

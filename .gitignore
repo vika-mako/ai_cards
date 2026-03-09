@@ -1,4 +1,8 @@
 .env
+.env.local
+
+# Buld
+dist
 
 # Logs
 npm-debug.log*
