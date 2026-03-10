@@ -3,8 +3,16 @@
 ### Install dependencies
 `npm install`
 
-### Server startup
-`npx tsx --env-file=config/.env src/server.ts`
+### Isolated Server startup
+`npm run dev`
+
+### Build
+`npm run build`
+
+### Overall startup
+`docker compose up`
+Startup and rebuild
+`docker compose up --build`
 
 ### Run test
-`npx tsx --env-file=config/.env tests/${test file name}`
+`npx tsx --env-file=config/.env.local tests/${test file name}`
