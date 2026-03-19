@@ -3,6 +3,8 @@ export interface LearningCard {
 }
 
 export class TextAnswerCard implements LearningCard {
+    public readonly type: string = "TextAnswerCard";
+
     constructor(
         public readonly title: string,
         public readonly task: string,
@@ -11,6 +13,8 @@ export class TextAnswerCard implements LearningCard {
 }
 
 export class SingleChoiceCard implements LearningCard {
+    public readonly type: string = "SingleChoiceCard";
+
     constructor(
         public readonly title: string,
         public readonly task: string,
@@ -20,6 +24,8 @@ export class SingleChoiceCard implements LearningCard {
 }
 
 export class MultipleChoiceCard implements LearningCard {
+    public readonly type: string = "MultipleChoiceCard";
+
     constructor(
         public readonly title: string,
         public readonly task: string,
@@ -29,6 +35,8 @@ export class MultipleChoiceCard implements LearningCard {
 }
 
 export class BinaryChoiceCard implements LearningCard {
+    public readonly type: string = "BinaryChoiceCard";
+
     constructor(
         public readonly title: string,
         public readonly task: string,
@@ -37,6 +45,8 @@ export class BinaryChoiceCard implements LearningCard {
 }
 
 export class MissingWordCard implements LearningCard {
+    public readonly type: string = "MissingWordCard";
+
     constructor(
         public readonly title: string,
         public readonly task: string,
