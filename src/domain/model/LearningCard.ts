@@ -40,6 +40,6 @@ export class MissingWordCard implements LearningCard {
     constructor(
         public readonly title: string,
         public readonly task: string,
-        public readonly answer: Boolean
+        public readonly answer: string
     ) {}
 }

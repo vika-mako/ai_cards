@@ -1,30 +1,22 @@
-import { getStatusUseCase } from './domain/usecases/GetStatusUseCase.ts'
-import { requestCardsUseCase } from './domain/usecases/RequestCardsUseCase.ts' 
-
-// TODO DI
-import { OpenAiClientImpl } from './data/repositories/OpenAiClientImpl.ts'
-
 import Fastify from 'fastify'
 
+import { apiV1Routes } from './routes.js';
+import { registerSwagger } from './plugins/swagger.js';
 
-const fastify = Fastify({
-  logger: true
-});
+const PORT = Number(process.env.PORT);
+const HOST = process.env.HOST;
 
 
-fastify.get('/status', async function handler (request, reply) {
-  return await getStatusUseCase();
-});
+const fastify = Fastify({ logger: true });
 
-fastify.post('/requestCards', async function handler(request, reply) {
-  // TODO validate request scheme
-  return await requestCardsUseCase(new OpenAiClientImpl())(request.body.prompt);
-});
+await registerSwagger(fastify);
+
+fastify.register(apiV1Routes, { prefix: '/api/v1' });
 
 
 try {
-  await fastify.listen({ port: 3000 })
+  await fastify.listen({ host: HOST, port: PORT });
 } catch (err) {
-  fastify.log.error(err)
-  process.exit(1)
+  fastify.log.error(err);
+  process.exit(1);
 }

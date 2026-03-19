@@ -1,5 +1,5 @@
-import { GenerationConfig } from "../model/GenerationConfig.ts";
-import { LearningCard } from "../model/LearningCard.ts";
+import { GenerationConfig } from "../model/GenerationConfig.js";
+import { LearningCard } from "../model/LearningCard.js";
 
 export interface OpenAiClient {
     /**

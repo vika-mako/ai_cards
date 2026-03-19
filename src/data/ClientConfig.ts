@@ -1,12 +1,44 @@
-import { BinaryChoiceCardConfig, MissingWordCardConfig, MultipleChoiceConfig, SingleChoiceCardConfig, TextAnswerCardConfig } from "../domain/model/GenerationConfig";
-import { BinaryChoiceCard, LearningCard, MissingWordCard, MultipleChoiceCard, SingleChoiceCard, TextAnswerCard } from "../domain/model/LearningCard";
+import { BinaryChoiceCardConfig, MissingWordCardConfig, MultipleChoiceConfig, SingleChoiceCardConfig, TextAnswerCardConfig } from "../domain/model/GenerationConfig.js";
+import { BinaryChoiceCard, LearningCard, MissingWordCard, MultipleChoiceCard, SingleChoiceCard, TextAnswerCard } from "../domain/model/LearningCard.js";
 
-export class RequestConfig<T extends LearningCard> {
+type TextAnswerCardResponse = {
+    task: string,
+    title: string,
+    answer: string
+}
+
+type SingleChoiceCardResponse = {
+    task: string,
+    title: string,
+    answerVariants: [string],
+    correctAnswer: number
+}
+
+type MultipleChoiceCerdResponse = {
+    task: string,
+    title: string,
+    answerVariants: [string],
+    correctAnswers: [number]
+}
+
+type BinaryChoiceCardResponse = {
+    task: string,
+    title: string,
+    answer: boolean
+}
+
+type MissingWordCardResponse = {
+    task: string,
+    title: string,
+    answer: string
+}
+
+export class RequestConfig<T extends LearningCard, A> {
     constructor(
         public readonly instructions: String,
         public readonly schema: Object,
         public readonly input: String,
-        public readonly decode: (json: Object) => T
+        public readonly decode: (json: A) => T
     ) {}
 }
 
@@ -44,7 +76,7 @@ export class ClientConfig {
             }
         },
         `Generate ${config.amount} flashcards for theme ${this.theme}. Return them as valid json`,
-        (json: Object): TextAnswerCard => new TextAnswerCard(json.title, json.task, json.answer)
+        (json: TextAnswerCardResponse): TextAnswerCard => new TextAnswerCard(json.title, json.task, json.answer)
     )
 
     singleChoiceCard = (config: SingleChoiceCardConfig) => new RequestConfig(
@@ -80,7 +112,7 @@ export class ClientConfig {
             }
         },
         `Generate ${config.amount} flashcards for theme ${this.theme}. Return them as valid json`,
-        (json: Object): SingleChoiceCard => new SingleChoiceCard(json.title, json.task, json.answerVariants, json.correctAnswer)
+        (json: SingleChoiceCardResponse): SingleChoiceCard => new SingleChoiceCard(json.title, json.task, json.answerVariants, json.correctAnswer)
     )
 
     multipleChoice = (config: MultipleChoiceConfig) => new RequestConfig(
@@ -116,7 +148,7 @@ export class ClientConfig {
             }
         },
         `Generate ${config.amount} flashcards for theme ${this.theme}. Return them as valid json`,
-        (json: Object): MultipleChoiceCard => new MultipleChoiceCard(json.title, json.task, json.answerVariants, json.correctAnswers)
+        (json: MultipleChoiceCerdResponse): MultipleChoiceCard => new MultipleChoiceCard(json.title, json.task, json.answerVariants, json.correctAnswers)
     )
 
     binaryChoiceCard = (config: BinaryChoiceCardConfig) => new RequestConfig(
@@ -150,7 +182,7 @@ export class ClientConfig {
             }
         },
         `Generate ${config.amount} flashcards for theme ${this.theme}. Return them as valid json`,
-        (json: Object): BinaryChoiceCard => new BinaryChoiceCard(json.title, json.task, json.answer)
+        (json: BinaryChoiceCardResponse): BinaryChoiceCard => new BinaryChoiceCard(json.title, json.task, json.answer)
     )
 
     missingWordCardConfig = (config: MissingWordCardConfig) => new RequestConfig(
@@ -184,6 +216,6 @@ export class ClientConfig {
             }
         },
         `Generate ${config.amount} flashcards for theme ${this.theme}. Return them as valid json`,
-        (json: Object): MissingWordCard => new MissingWordCard(json.title, json.task, json.answer)
+        (json: MissingWordCardResponse): MissingWordCard => new MissingWordCard(json.title, json.task, json.answer)
     )
 }

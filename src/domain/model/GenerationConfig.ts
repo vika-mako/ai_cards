@@ -1,32 +1,32 @@
 export class TextAnswerCardConfig {
     constructor(
-        public readonly amount: Number
+        public readonly amount: number
     ) {}
 }
 
 export class SingleChoiceCardConfig {
     constructor(
-        public readonly variantsNumber: Number,
-        public readonly amount: Number
+        public readonly variantsNumber: number,
+        public readonly amount: number
     ) {}
 }
 
 export class MultipleChoiceConfig {
     constructor(
-        public readonly variantsNumber: Number,
-        public readonly amount: Number
+        public readonly variantsNumber: number,
+        public readonly amount: number
     ) {}
 }
 
 export class BinaryChoiceCardConfig {
     constructor(
-        public readonly amount: Number
+        public readonly amount: number
     ) {}
 }
 
 export class MissingWordCardConfig {
     constructor(
-        public readonly amount: Number
+        public readonly amount: number
     ) {}
 }
 
